@@ -7,6 +7,7 @@ from langchain.llms import Replicate
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
+from langchain.llms import HuggingFaceHub
 from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import Docx2txtLoader
@@ -63,11 +64,13 @@ def create_conversational_chain(vector_store):
                         #streaming=True, 
                         #callbacks=[StreamingStdOutCallbackHandler()],
                         #model_type="llama", config={'max_new_tokens': 500, 'temperature': 0.01})
-    llm = Replicate(
-        streaming = True,
-        model = "replicate/llama-2-70b-chat:58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781", 
-        callbacks=[StreamingStdOutCallbackHandler()],
-        input = {"temperature": 0.01, "max_length" :500,"top_p":1})
+    #llm = Replicate(
+        #streaming = True,
+        #model = "replicate/llama-2-70b-chat:58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781", 
+        #callbacks=[StreamingStdOutCallbackHandler()],
+        #input = {"temperature": 0.01, "max_length" :500,"top_p":1})
+    llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":0.5, "max_length":512})
+
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
     chain = ConversationalRetrievalChain.from_llm(llm=llm, chain_type='stuff',
