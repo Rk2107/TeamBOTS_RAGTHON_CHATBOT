@@ -2,6 +2,8 @@ import streamlit as st
 import os
 import tempfile
 import streamlit as st
+import langchain
+import langchain_community
 from dotenv import load_dotenv
 from streamlit_chat import message
 from langchain.chains import ConversationalRetrievalChain
