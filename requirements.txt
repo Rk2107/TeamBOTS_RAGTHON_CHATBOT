@@ -1,14 +1,26 @@
-langchain==0.1.20
-langchain-community==0.0.30
-langchain-core==0.1.30
-sentence_transformers
-streamlit_chat
+l# Core
 streamlit
+streamlit-chat
+python-dotenv
+
+# LangChain (COMPATIBLE SET)
+langchain==0.1.20
+langchain-community==0.0.38
+langchain-core==0.1.30
+
+# Vector DB
 faiss-cpu
+
+# Embeddings
+sentence-transformers==2.2.2
+
+# LLM API
+replicate
+
+# File loaders
+pypdf
+docx2txt
 tiktoken
 huggingface-hub
-pypdf
-python-dotenv
-replicate
-docx2txt
+
 
