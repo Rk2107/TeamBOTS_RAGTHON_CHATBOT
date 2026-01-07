@@ -1,5 +1,13 @@
 import streamlit as st
-from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
+import os
+import tempfile
+import streamlit as st
+from dotenv import load_dotenv
+from streamlit_chat import message
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.llms import Replicate
 from langchain_community.vectorstores import FAISS
@@ -8,15 +16,6 @@ from langchain_community.document_loaders import (
     TextLoader,
     Docx2txtLoader
 )
-from langchain.memory import ConversationBufferMemory
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from streamlit_chat import message
-from langchain.llms import CTransformers
-from langchain.llms import Replicate
-import os
-from dotenv import load_dotenv
-import tempfile
 
 
 load_dotenv()
