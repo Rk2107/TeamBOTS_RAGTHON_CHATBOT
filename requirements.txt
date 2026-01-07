@@ -1,14 +1,11 @@
 langchain==0.1.20
 langchain-community==0.0.30
 langchain-core==0.1.30
-torch
-accelerate
 sentence_transformers
 streamlit_chat
 streamlit
 faiss-cpu
 tiktoken
-ctransformers
 huggingface-hub
 pypdf
 python-dotenv
