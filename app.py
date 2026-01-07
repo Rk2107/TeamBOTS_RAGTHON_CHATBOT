@@ -1,16 +1,19 @@
 import streamlit as st
+from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.llms import Replicate
+from langchain_community.vectorstores import FAISS
+from langchain_community.document_loaders import (
+    PyPDFLoader,
+    TextLoader,
+    Docx2txtLoader
+)
+from langchain.memory import ConversationBufferMemory
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from streamlit_chat import message
-from langchain.chains import ConversationalRetrievalChain
-from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.llms import CTransformers
 from langchain.llms import Replicate
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.memory import ConversationBufferMemory
-from langchain.document_loaders import PyPDFLoader
-from langchain.document_loaders import TextLoader
-from langchain.document_loaders import Docx2txtLoader
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 import os
 from dotenv import load_dotenv
 import tempfile
